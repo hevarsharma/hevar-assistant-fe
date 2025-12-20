@@ -3,6 +3,7 @@ import { useSpeechToText } from "../hooks/useSpeechToText";
 import { sendQuery } from "../api/query.api";
 import { getSessionId } from "../utils/session";
 import { speakText, stopSpeaking } from "../utils/tts";
+import { thinkingPhrases } from "../constants/thinkingPhrases";
 
 export default function AssistantBox() {
   const [status, setStatus] = useState("idle");
@@ -11,28 +12,59 @@ export default function AssistantBox() {
 
   const { startListening } = useSpeechToText({
     onResult: async (text) => {
+
       try {
-        // user finished speaking → API starts
         setStatus("processing");
+
+        // 🎯 1. Speak random thinking phrase
+        const randomPhrase =
+          thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
+
+        speakText(randomPhrase);
 
         const sessionId = getSessionId();
         const res = await sendQuery(text, sessionId);
         const reply = res.data.text || res.data.full_response;
 
-        if (reply) {
-          // API done → speaking
-          setStatus("speaking");
+        // 🎯 2. Backend response arrived → stop thinking speech
+        stopSpeaking();
+
+        // 🎯 3. Small transition phrase
+        setStatus("speaking");
+        speakText("Got your answer.", () => {
+          // 🎯 4. Speak actual response
           speakText(reply, () => {
-            // speech finished → back to idle
             setStatus("idle");
           });
-        } else {
-          setStatus("idle");
-        }
+        });
+
       } catch (err) {
         setError("Failed to process query");
         setStatus("idle");
       }
+
+      // try {
+      //   // user finished speaking → API starts
+      //   setStatus("processing");
+
+      //   const sessionId = getSessionId();
+      //   const res = await sendQuery(text, sessionId);
+      //   const reply = res.data.text || res.data.full_response;
+
+      //   if (reply) {
+      //     // API done → speaking
+      //     setStatus("speaking");
+      //     speakText(reply, () => {
+      //       // speech finished → back to idle
+      //       setStatus("idle");
+      //     });
+      //   } else {
+      //     setStatus("idle");
+      //   }
+      // } catch (err) {
+      //   setError("Failed to process query");
+      //   setStatus("idle");
+      // }
     },
 
     onEnd: () => {

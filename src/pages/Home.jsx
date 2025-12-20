@@ -5,7 +5,7 @@ import { initSession } from "../utils/session";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +14,11 @@ export default function Home() {
 
   return (
     <div className="relative h-screen w-screen bg-white">
+      {/* Top-left: Username */}
+      <div className="absolute top-4 left-6 z-10 text-[#5F7482] text-sm font-medium">
+        {user?.name ? `${user.name} 😇` : ""}
+      </div>
+
       {/* Top-right controls */}
       <div className="absolute top-4 right-6 flex gap-6 z-10">
         <button
@@ -31,7 +36,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Perfect center */}
+      {/* Perfect center assistant */}
       <div className="absolute inset-0 flex items-center justify-center">
         <AssistantBox />
       </div>

@@ -1,0 +1,22 @@
+export const thinkingPhrases = [
+  "Alright, I’m going through your documents and gathering the relevant details. This might take just a moment.",
+  "Let me carefully analyze the information you’ve provided and see what insights I can pull out for you.",
+  "I’m checking through your uploaded data right now to make sure I give you an accurate answer.",
+  "Give me a moment while I scan through everything and put the pieces together for you.",
+  "I’m processing the information from your documents and making sense of it for you right now.",
+  "Let me take a closer look at the data and see what stands out based on your question.",
+  "I’m reviewing the available information and organizing it so I can answer you clearly.",
+  "Hang on for a second, I’m digging into your documents to find exactly what you’re looking for.",
+  "I’m working through the details in the background to make sure nothing important is missed.",
+  "Let me carefully evaluate the data you’ve shared and come back with a clear response.",
+  "I’m pulling together the relevant information from your documents. This should only take a few seconds.",
+  "I’m going step by step through the data to ensure the answer I give you is precise and useful.",
+  "Just a moment, I’m analyzing everything behind the scenes to give you the best possible answer.",
+  "I’m reviewing multiple pieces of information right now to make sure the response is accurate.",
+  "Let me process this properly so I can explain it to you in a simple and clear way.",
+  "I’m taking a closer look at your documents and connecting the dots for you.",
+  "I’m checking the context of your question against the data you’ve uploaded.",
+  "Give me a few seconds while I make sense of the information and prepare a response.",
+  "I’m carefully going through the details to ensure the answer is reliable and complete.",
+  "I’m analyzing your request along with the document data to give you a meaningful answer."
+];
