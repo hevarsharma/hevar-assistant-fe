@@ -19,7 +19,7 @@ export const streamQuery = async (query, sessionId, onChunk, onEnd, onError) => 
       headers["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL || "http://20.174.12.87:8000"}/query/stream`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL || "https://api.hevarassistantbackend.site"}/query/stream`, {
       method: "POST",
       headers,
       body: JSON.stringify({
