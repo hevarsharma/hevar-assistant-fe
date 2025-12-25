@@ -7,7 +7,7 @@ export const streamQuery = async ({
   onError,
 }) => {
   try {
-    const res = await fetch("http://localhost:8000/query/stream", {
+    const res = await fetch("http://20.174.12.87:8000/query/stream", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
