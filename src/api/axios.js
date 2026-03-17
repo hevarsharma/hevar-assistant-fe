@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.hevarassistantbackend.site",
+  baseURL: "https://hevar8-hevar-assistant-api.hf.space",
 });
 
 api.interceptors.request.use((config) => {

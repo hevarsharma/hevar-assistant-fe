@@ -7,7 +7,7 @@ export const streamQuery = async ({
   onError,
 }) => {
   try {
-    const res = await fetch("https://api.hevarassistantbackend.site/query/stream", {
+    const res = await fetch("https://hevar8-hevar-assistant-api.hf.space/query/stream", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
